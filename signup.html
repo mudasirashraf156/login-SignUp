@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign In Form</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="wrapper login">
+        <div class="container">
+            <div class="col-left">
+                <div class="login-text">
+                    <h2>Welcome!</h2>
+                    <p>Login<br>For Free!</p> <a href="reg.html" class="btn">Login </a>
+                </div>
+            </div>
+            <div class="col-right">
+                <div class="login-form">
+                    <h2>Signup</h2>
+                    <form action="">
+                        <p> <label>Username/Email address<span>*</span></label> <input type="text" id="username" placeholder="Username or Email" required> </p>
+                        <p> <label>Password<span>*</span></label> <input type="password" id="password" placeholder="Password" required> </p>
+                        <p> <input type="submit" onclick="signup(event)" value="Sign Up"> </p>
+                        <!-- <p> <a href="">Forgot password?</a> </p> -->
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script>
+
+
+function signup(event){
+    event.preventDefault()
+    console.log("ajxds")
+let userName = document.getElementById("username").value
+let password =  document.getElementById("password").value
+const userdetail ={
+    userName : userName,
+    password :password
+}
+
+console.log(userdetail)
+const requestOptions = {
+        method: 'POST',
+        body: JSON.stringify(userdetail)
+    };
+    console.log(requestOptions)
+    fetch('http://localhost:8080/Signup', requestOptions)
+        .then((response) => {
+            if (response.ok) {
+                return (window.location.href = "thanks.html")
+
+            }
+          
+        })
+            
+    }
+    </script>
+</html>
